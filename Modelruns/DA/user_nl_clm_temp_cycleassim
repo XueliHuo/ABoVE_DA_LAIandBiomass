@@ -1,0 +1,43 @@
+!----------------------------------------------------------------------------------
+! Users should add all user specific namelist changes below in the form of 
+! namelist_var = new_namelist_value 
+!
+! EXCEPTIONS: 
+! Set use_cndv           by the compset you use and the CLM_BLDNML_OPTS -dynamic_vegetation setting
+! Set use_vichydro       by the compset you use and the CLM_BLDNML_OPTS -vichydro           setting
+! Set use_cn             by the compset you use and CLM_BLDNML_OPTS -bgc  setting
+! Set use_crop           by the compset you use and CLM_BLDNML_OPTS -crop setting
+! Set spinup_state       by the CLM_BLDNML_OPTS -bgc_spinup      setting
+! Set co2_ppmv           with CCSM_CO2_PPMV                      option
+! Set fatmlndfrc         with LND_DOMAIN_PATH/LND_DOMAIN_FILE    options
+! Set finidat            with RUN_REFCASE/RUN_REFDATE/RUN_REFTOD options for hybrid or branch cases
+!                        (includes $inst_string for multi-ensemble cases)
+!                        or with CLM_FORCE_COLDSTART to do a cold start
+!                        or set it with an explicit filename here.
+! Set maxpatch_glcmec    with GLC_NEC                            option
+! Set glc_do_dynglacier  with GLC_TWO_WAY_COUPLING               env variable
+!----------------------------------------------------------------------------------
+
+finidat = 'curcase.clm2_INST.r.YEAR-MONTH-DAY-00000.nc'
+fsurdat = '/glade/work/huoxl/CESM/ctsm/clm5.0.06/tools/mksurfdata_map/surfdata_0.25x0.25_Arctic_78pfts_CMIP6_simyr2000_c200927.nc'
+use_lch4 = .false.
+use_init_interp = .false.
+init_interp_fill_missing_with_natveg = .true.
+hist_empty_htapes = .true.
+hist_fincl1 = 'TLAI','LEAFC','FROOTC','LIVECROOTC','DEADCROOTC','LIVESTEMC','DEADSTEMC',
+                        'TOTSOMC','TOTLITC','TOTSOMC_1m','TOTLITC_1m',
+                        'TOTVEGC','TOTECOSYSC',
+                        'GPP','ER','SR','AGNPP','NEP','NEE',
+                        'FSH','EFLX_LH_TOT','SOILWATER_10CM','TWS',
+                        'FSNO','FSNO_EFF','H2OSNO','SNOW_DEPTH',
+                        'VCMX25T','FSUN','PARVEGLN','COSZEN','TBOT','QBOT',
+                        'QFLX_EVAP_TOT','QSOIL','QVEGE','QVEGT','QFLX_EVAP_VEG',
+                        'TSKIN','ALBGRD','ALBGRI','ALBD','ALBI','LEAFN',
+                        'FSDS','FSDSVD','FSDSVDLN','FSR','FSRVD','FSRVDLN'
+hist_fincl2 = 'TLAI','LEAFC','LIVESTEMC','DEADSTEMC'
+hist_fincl3 = 'HTOP','HBOT','SNOW_DEPTH','SNOW_PERSISTENCE','FSNO','FSNO_EFF'
+hist_nhtfrq = 0,-192,-192
+hist_mfilt  = 1,1,1
+hist_avgflag_pertape = 'A','I','I'
+hist_dov2xy = .true.,.true.,.false.
+hist_type1d_pertape = ' ',' ',' '
